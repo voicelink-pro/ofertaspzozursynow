@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta VoiceLink — SPZOZ Ursynów</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gradient-start: #00D9FF;
+            --gradient-mid: #7B2CBF;
+            --gradient-end: #9D4EDD;
+            --text-dark: #1A1A1A;
+            --text-gray: #6B7280;
+        }
+
+        @page { size: A4; margin: 15mm; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 11pt;
+            line-height: 1.5;
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 18mm 20mm;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.08);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-mid) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        /* Nagłówek strony */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .header-logo {
+            height: 100px;
+            width: auto;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .header-title {
+            font-size: 18pt;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .header-subtitle {
+            font-size: 10pt;
+            color: var(--text-gray);
+            margin-top: 4px;
+        }
+
+        .header-date {
+            font-size: 9pt;
+            color: var(--text-gray);
+            margin-top: 8px;
+        }
+
+        /* Sekcje dokumentu */
+        .block {
+            margin-bottom: 20px;
+        }
+
+        .block h2 {
+            font-size: 12pt;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(90deg, var(--gradient-start), var(--gradient-mid)) 1;
+        }
+
+        .block p, .block li {
+            font-size: 10pt;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .block ul {
+            padding-left: 18px;
+            margin-top: 6px;
+        }
+
+        /* Boxy czynności asystenta */
+        .scope-hero {
+            margin: 16px 0;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.06) 0%, rgba(123, 44, 191, 0.08) 100%);
+            border-radius: 14px;
+            border: 1px solid rgba(0, 217, 255, 0.25);
+        }
+
+        .scope-hero .lead {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 14px;
+        }
+
+        .scope-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .scope-card {
+            padding: 14px 16px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scope-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .scope-card.confirm {
+            background: linear-gradient(180deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.02) 100%);
+            border: 1px solid rgba(76, 175, 80, 0.35);
+        }
+        .scope-card.confirm::before { background: linear-gradient(90deg, #4CAF50, #81C784); }
+
+        .scope-card.cancel {
+            background: linear-gradient(180deg, rgba(244, 67, 54, 0.06) 0%, rgba(244, 67, 54, 0.02) 100%);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+        }
+        .scope-card.cancel::before { background: linear-gradient(90deg, #F44336, #E57373); }
+
+        .scope-card.reschedule {
+            background: linear-gradient(180deg, rgba(255, 152, 0, 0.08) 0%, rgba(255, 152, 0, 0.02) 100%);
+            border: 1px solid rgba(255, 152, 0, 0.4);
+        }
+        .scope-card.reschedule::before { background: linear-gradient(90deg, #FF9800, #FFB74D); }
+
+        .scope-card .title {
+            font-size: 9.5pt;
+            font-weight: 800;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+
+        .scope-card .desc {
+            font-size: 9pt;
+            line-height: 1.45;
+            color: var(--text-gray);
+        }
+
+        .price-highlight {
+            margin: 14px 0;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.08) 0%, rgba(123, 44, 191, 0.12) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(123, 44, 191, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .price-highlight .label {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .price-highlight .amount {
+            font-size: 16pt;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-mid) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .packages {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 12px;
+        }
+        .package {
+            padding: 16px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.06) 0%, rgba(123, 44, 191, 0.08) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(123, 44, 191, 0.25);
+            text-align: center;
+        }
+        .package-minutes {
+            font-size: 12pt;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .package-price {
+            margin-top: 6px;
+            font-size: 11pt;
+            font-weight: 600;
+            color: var(--gradient-mid);
+        }
+
+        /* Tabela */
+        .table-wrap {
+            margin: 12px 0;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            box-shadow: 0 2px 12px rgba(0, 217, 255, 0.06);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10pt;
+        }
+
+        th, td {
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.12) 0%, rgba(123, 44, 191, 0.12) 100%);
+            font-weight: 700;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        .col-price { text-align: right; font-weight: 600; color: var(--gradient-mid); }
+
+        .total-row td { font-weight: 700; padding-top: 12px; }
+
+        /* ===== Wykresy pionowe ===== */
+        .chart-section {
+            margin: 14px 0;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, rgba(0,217,255,0.04) 0%, rgba(123,44,191,0.04) 100%);
+            border: 1px solid rgba(123,44,191,0.15);
+            border-radius: 14px;
+        }
+        .chart-title {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+        .chart-subtitle {
+            font-size: 9pt;
+            color: var(--text-gray);
+            margin-bottom: 16px;
+        }
+
+        /* Układ słupków */
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 60px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .bar-chart-area {
+            height: 140px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 60px;
+        }
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .bar-value {
+            font-size: 10pt;
+            font-weight: 800;
+            margin-bottom: 6px;
+            white-space: nowrap;
+        }
+        .bar-value.negative { color: #E53935; }
+        .bar-value.positive {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .bar {
+            width: 80px;
+            border-radius: 8px 8px 0 0;
+            position: relative;
+        }
+        .bar.current {
+            background: linear-gradient(180deg, #EF5350 0%, #E53935 100%);
+            box-shadow: 0 4px 16px rgba(229,57,53,0.2);
+        }
+        .bar.voicelink {
+            background: linear-gradient(180deg, var(--gradient-start) 0%, var(--gradient-mid) 100%);
+            box-shadow: 0 4px 16px rgba(0,217,255,0.25);
+        }
+        .bar-labels-row {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 10px;
+        }
+        .bar-label-block {
+            text-align: center;
+            width: 100px;
+        }
+        .bar-label {
+            font-size: 8.5pt;
+            font-weight: 600;
+            color: var(--text-gray);
+        }
+        .bar-detail {
+            font-size: 7.5pt;
+            font-weight: 400;
+            color: var(--text-gray);
+            opacity: 0.75;
+            margin-top: 2px;
+        }
+
+        /* Wykres pakietów — 3 słupki (grid) */
+        .pkg-chart-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            text-align: center;
+        }
+        .pkg-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .pkg-bars-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: flex-end;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 6px;
+        }
+        .pkg-bars-row .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .bar.pkg {
+            width: 80px;
+            border-radius: 8px 8px 0 0;
+            position: relative;
+        }
+        .bar.pkg-sm {
+            background: linear-gradient(180deg, #b39ddb 0%, var(--gradient-end) 100%);
+            box-shadow: 0 4px 14px rgba(157,78,221,0.15);
+        }
+        .bar.pkg-md {
+            background: linear-gradient(180deg, var(--gradient-start) 20%, var(--gradient-mid) 100%);
+            box-shadow: 0 4px 14px rgba(0,217,255,0.2);
+        }
+        .bar.pkg-lg {
+            background: linear-gradient(180deg, #00D9FF 0%, #00B4D8 100%);
+            box-shadow: 0 4px 14px rgba(0,217,255,0.25);
+        }
+        .bar-rate {
+            margin-top: 2px;
+            font-size: 8pt;
+            font-weight: 700;
+            color: var(--gradient-mid);
+            text-align: center;
+        }
+
+        /* Etykieta oszczędności */
+        .savings-badge {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 8px 18px;
+            background: linear-gradient(135deg, rgba(76,175,80,0.1) 0%, rgba(76,175,80,0.04) 100%);
+            border: 1px solid rgba(76,175,80,0.35);
+            border-radius: 10px;
+            font-size: 9.5pt;
+            font-weight: 700;
+            color: #2E7D32;
+        }
+
+        /* Harmonogram zwarty */
+        .timeline-compact {
+            margin-top: 8px;
+        }
+
+        .timeline-compact div {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 8px;
+            font-size: 10pt;
+        }
+
+        .timeline-compact .num {
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-mid) 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 9pt;
+        }
+
+        /* Kontakt */
+        .contact {
+            margin-top: 16px;
+            padding: 14px 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--gradient-mid);
+            font-size: 10pt;
+        }
+
+        .contact strong { display: inline-block; min-width: 70px; }
+
+        @media (max-width: 520px) {
+            .scope-cards { grid-template-columns: 1fr; }
+            .packages { grid-template-columns: 1fr; }
+            .bar-chart, .bar-chart-packages { gap: 20px; }
+            .bar { width: 60px; }
+            .bar.pkg { width: 65px; }
+        }
+
+        @media print {
+            body { background: #fff; }
+            .page { box-shadow: none; margin: 0; padding: 15mm; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+
+        <header class="header">
+            <img src="logo.png" alt="VoiceLink" class="header-logo">
+            <div class="header-right">
+                <div class="header-title">Oferta dla <span class="gradient-text">SPZOZ Ursynów</span></div>
+                <div class="header-subtitle">Asystent głosowy AI — obsługa telefoniczna i rejestracja pacjentów</div>
+                <div class="header-date">Data oferty:  13.02.2026</div>
+            </div>
+        </header>
+
+        <div class="block">
+            <h2>1. Wprowadzenie</h2>
+            <p>Niniejsza oferta dotyczy wdrożenia asystenta głosowego VoiceLink w SPZOZ Ursynów. Obejmuje zakres usług, szacunkowe koszty oraz harmonogram. Wartości i wykresy można doprecyzować po spotkaniu.</p>
+        </div>
+
+        <div class="block">
+            <h2>2. Zakres usług i czynności asystenta</h2>
+            <p>Wdrożenie jednorazowe obejmuje konfigurację asystenta AI oraz integrację z systemem rezerwacji. Asystent realizuje <strong>potwierdzenia telefoniczne wizyt</strong> oraz <strong>zarządzanie rezerwacjami</strong> w trakcie rozmowy — w zależności od decyzji pacjenta:</p>
+
+            <div class="scope-hero">
+                <div class="lead">Czynności asystenta podczas potwierdzenia wizyty</div>
+                <div class="scope-cards">
+                    <div class="scope-card confirm">
+                        <div class="title">Potwierdzenie</div>
+                        <div class="desc">Pacjent potwierdza wizytę — asystent zapisuje potwierdzenie w systemie. Koniec rozmowy.</div>
+                    </div>
+                    <div class="scope-card cancel">
+                        <div class="title">Rezygnacja</div>
+                        <div class="desc">Pacjent mówi, że nie przyjdzie — asystent <strong>anuluje wizytę</strong> w systemie rezerwacji.</div>
+                    </div>
+                    <div class="scope-card reschedule">
+                        <div class="title">Przełożenie</div>
+                        <div class="desc">Pacjent chce przełożyć wizytę — asystent przekazuje informację do recepcji, która ustala nowy termin.</div>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 12px;">Dodatkowo: obsługa wielojęzyczna, wsparcie wdrożeniowe i techniczne, comiesięczne raporty i spotkania przez pierwsze 6 miesięcy.</p>
+        </div>
+
+        <div class="block">
+            <h2>3. Pakiety minut</h2>
+
+            <div class="chart-section">
+                <div class="chart-title">Pakiety minut — abonament miesięczny</div>
+                <div class="chart-subtitle">Im większy pakiet, tym niższa stawka minutowa</div>
+                <div class="pkg-bars-row">
+                    <div class="bar-group">
+                        <div class="bar-value positive">0,40 zł / min</div>
+                        <div class="bar pkg pkg-sm" style="height: 55px;"></div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-value positive">0,35 zł / min</div>
+                        <div class="bar pkg pkg-md" style="height: 95px;"></div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-value positive">0,30 zł / min</div>
+                        <div class="bar pkg pkg-lg" style="height: 120px;"></div>
+                    </div>
+                </div>
+                <div class="pkg-bars-row" style="border: none; padding: 0; margin-top: 10px; align-items: start;">
+                    <div class="bar-group">
+                        <div class="bar-label">10 000 min</div>
+                        <div class="bar-rate">4 000 zł / mies.</div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-label">20 000 min</div>
+                        <div class="bar-rate">7 000 zł / mies.</div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-label">30 000 min</div>
+                        <div class="bar-rate">9 000 zł / mies.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2>4. Cennik</h2>
+            <div class="price-highlight">
+                <span class="label">Wdrożenie i integracja (jednorazowo)</span>
+                <span class="amount">20 000 zł netto</span>
+            </div>
+            <p style="font-size: 9.5pt; color: var(--text-gray); margin-top: -4px;">Czynności asystenta: potwierdzenia telefoniczne wizyt, zarządzanie rezerwacjami (anulowanie, przełożenie z przekazaniem do recepcji, potwierdzenie).</p>
+            <p style="margin-top: 14px;"><strong>Abonament miesięczny — pakiety minut:</strong></p>
+            <div class="packages">
+                <div class="package">
+                    <div class="package-minutes">10 000 min</div>
+                    <div class="package-price">4 000 zł netto / mies.</div>
+                    <div class="bar-rate" style="margin-top:4px;">0,40 zł / min</div>
+                </div>
+                <div class="package">
+                    <div class="package-minutes">20 000 min</div>
+                    <div class="package-price">7 000 zł netto / mies.</div>
+                    <div class="bar-rate" style="margin-top:4px;">0,35 zł / min</div>
+                </div>
+                <div class="package">
+                    <div class="package-minutes">30 000 min</div>
+                    <div class="package-price">9 000 zł netto / mies.</div>
+                    <div class="bar-rate" style="margin-top:4px;">0,30 zł / min</div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+</body>
+</html>
